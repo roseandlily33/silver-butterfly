@@ -1,9 +1,11 @@
 import './App.css';
 
+import NavBar from './components/Navbar';
 function App() {
   return (
     <div className="App">
-     <h1>Jamming Spotify App</h1>
+      <NavBar />
+    
     </div>
   );
 }

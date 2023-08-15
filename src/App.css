@@ -1,6 +1,22 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Lisu+Bosa:wght@300;500;800&family=Monoton&display=swap');
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box; 
 }
 
+:root {
+  --mainFont: 'Lisu Bosa', serif;
+  --headingFont: 'Monoton', cursive;
+}
+
+body{
+  background-image: url('./images/jason-leung-6rGJQry0_WI-unsplash.jpg');
+  background-size: cover;
+
+}
+h1{
+  font-family: var(--headingFont);
+  font-size: 3em;
+}
