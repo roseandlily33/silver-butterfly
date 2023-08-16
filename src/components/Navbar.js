@@ -1,7 +1,7 @@
 const NavBar = () => {
     return (
      <nav>
-        <h1>Jamming</h1>
+        <h1>Jammin</h1>
         <div>
         <input>
         </input>

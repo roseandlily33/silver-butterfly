@@ -1,7 +1,13 @@
 
 const SearchResults = () => {
     return ( 
-        <h3>Search Results</h3>
+        <div className="searchResultsCont">
+        <h3>Search Results</h3> 
+        <div className="mappedResults">
+
+        </div>
+        </div>
+        
      );
 }
  

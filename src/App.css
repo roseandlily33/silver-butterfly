@@ -5,22 +5,23 @@
   margin: 0;
   box-sizing: border-box; 
 }
-
 :root {
   --mainFont: 'Lisu Bosa', serif;
   --headingFont: 'Monoton', cursive;
-  --pink: #FF69B4;
+  --pink: #e4024a;
   --borderRadius: 10px;
   --border: 4px solid var(--pink);
 }
+/* Fonts */
 h1{
   font-family: var(--headingFont);
   font-size: 3em;
+  color: #ae2752;
 }
 h2, h3, h4, h5, h6{
   font-family: var(--mainFont);
 }
-
+/* Buttons */
 button{
   border: var(--border);
   border-radius: var(--borderRadius);
@@ -43,7 +44,7 @@ body{
   background-repeat: no-repeat;
 
 }
-
+/* Navbar */
 nav{
   display: flex;
   flex-direction: row;
@@ -56,7 +57,36 @@ nav input{
   border: var(--border);
   border-radius: var(--borderRadius);
 }
+/* Main Content */
+.mainContent{
+  margin: 1em;
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  height: 80vh;
+  gap: 1em;
+}
+/*Playlist Content */
+.playlistCont{
+  border: 2px solid blue;
+}
+.playlistResults{
+  border: 2px solid green;
+  height: 90%;
+}
+/* Search Results Content */
+.searchResultsCont{
+  border: 2px solid orange;
+}
+.mappedResults{
+  border: 2px solid green;
+  height: 90%;
+}
 
+
+
+
+/* Main Content */
 @media screen and (max-width: 700px){
   nav{
     text-align: center;
