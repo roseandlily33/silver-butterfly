@@ -2,8 +2,9 @@
 const Playlist = () => {
     return ( 
         <div className="playlistCont">
-            <h3>Playlist</h3>
+            <h2>Playlist</h2>
             <div className="playlistResults">
+
 
             </div>
         </div>

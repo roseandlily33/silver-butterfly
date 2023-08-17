@@ -42,14 +42,13 @@ body{
   background-size: cover;
   height: 100vh;
   background-repeat: no-repeat;
-
 }
 /* Navbar */
 nav{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 1.3em;
+  margin: 1em;
 }
 nav input{
   width: 20em;
@@ -59,37 +58,55 @@ nav input{
 }
 /* Main Content */
 .mainContent{
-  margin: 1em;
-  border: 1px solid white;
-  display: grid;
-  grid-template-columns: 7fr 5fr;
-  height: 80vh;
+  display: flex;
+  flex-direction: row;
   gap: 1em;
+  height: 88vh;
+  margin: 0.5em;
 }
-/*Playlist Content */
-.playlistCont{
-  border: 2px solid blue;
-}
-.playlistResults{
-  border: 2px solid green;
-  height: 90%;
-}
-/* Search Results Content */
 .searchResultsCont{
-  border: 2px solid orange;
+  width: 80%;
+}
+/* Search Results */
+.searchResultsCont h2, .playlistCont h2{
+  font-weight: bold;
+  padding: 0.3em;
+  text-align: center;
+  color: var(--pink);
+
 }
 .mappedResults{
-  border: 2px solid green;
   height: 90%;
+  overflow-y: scroll;
+}
+.eachResult{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1em;
+  border: 2px solid var(--pink);
+  border-radius: var(--borderRadius);
+  font-size: 1em;
+  padding: 0.5em;
+  gap: 1em;
+  background-color: white;
 }
 
-
+/* Playlist Container */
+.playlistCont{
+  border: 3px solid red;
+  width: 100%;
+}
 
 
 /* Main Content */
 @media screen and (max-width: 700px){
   nav{
     text-align: center;
+    flex-direction: column;
+  }
+  .mainContent{
     flex-direction: column;
   }
 }

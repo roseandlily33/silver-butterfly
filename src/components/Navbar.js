@@ -4,10 +4,10 @@ import SearchResults from "./SearchResults";
 const NavBar = () => {
     const [searchInput, setSearchInput] = useState('');
     const [accessToken, setAccessToken] = useState('');
+    const [albums, setAlbums] = useState([]);
     
     useEffect(() => {
         console.log('Getting the access token')
-        
         
         fetch('https://accounts.spotify.com/api/token', {
             method: 'POST',
@@ -31,18 +31,22 @@ const NavBar = () => {
         }).then(res => res.json())
         .then(data => {return data.artists.items[0].id})
         .catch(e => console.error(e))
-        console.log('ARTIST ID', artistId);
-        let albums = await fetch('https://api.spotify.com/v1/artists' + artistId +'/albums?include_groups=album&market=us&limit=15', {
+        console.log('ARTISTS ID', artistId)
+        let albumsReturned = await fetch('https://api.spotify.com/v1/artists/' + artistId +'/albums', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + accessToken
             }
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log('ALBUM DATA', data); 
+            setAlbums(data.items);})
         .catch(e => console.error(e));
-        console.log('ALBUMS', albums);
+        console.log('ALBUMS', albumsReturned);
+        console.log('LIST OF ALBUMS', albums);
     }
+    
 
     return (
         <>
@@ -53,7 +57,7 @@ const NavBar = () => {
         <button onClick={searchAlbum}>Search</button>
         </div>
     </nav> 
-    <SearchResults  />
+    <SearchResults albums={albums} />
     </>
     );
 }
