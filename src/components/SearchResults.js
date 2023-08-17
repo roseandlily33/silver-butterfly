@@ -1,5 +1,5 @@
 
-const SearchResults = () => {
+const SearchResults = (props) => {
     return ( 
         <div className="searchResultsCont">
         <h3>Search Results</h3> 

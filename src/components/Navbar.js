@@ -1,15 +1,61 @@
+import { useState, useEffect } from "react";
+import SearchResults from "./SearchResults";
+
 const NavBar = () => {
+    const [searchInput, setSearchInput] = useState('');
+    const [accessToken, setAccessToken] = useState('');
+    
+    useEffect(() => {
+        console.log('Getting the access token')
+        
+        
+        fetch('https://accounts.spotify.com/api/token', {
+            method: 'POST',
+            body: 'grant_type=client_credentials&client_id=' + client_id + '&client_secret=' + client_secret,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        .then(res => res.json())
+        .then(data => setAccessToken(data.access_token))
+        .catch(e => console.error(e));
+    }, [])
+
+    const searchAlbum = async() => {
+        console.log('Searching for an album ' + searchInput);
+        let artistId = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            }
+        }).then(res => res.json())
+        .then(data => {return data.artists.items[0].id})
+        .catch(e => console.error(e))
+        console.log('ARTIST ID', artistId);
+        let albums = await fetch('https://api.spotify.com/v1/artists' + artistId +'/albums?include_groups=album&market=us&limit=15', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + accessToken
+            }
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(e => console.error(e));
+        console.log('ALBUMS', albums);
+    }
+
     return (
+        <>
      <nav>
         <h1>Jammin</h1>
         <div>
-        <input>
-        </input>
-        <button>Search</button>
+        <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)}></input>
+        <button onClick={searchAlbum}>Search</button>
         </div>
-
-
-    </nav> );
+    </nav> 
+    <SearchResults  />
+    </>
+    );
 }
  
 export default NavBar;
