@@ -43,11 +43,7 @@ const NavBar = () => {
             console.log('ALBUM DATA', data); 
             setAlbums(data.items);})
         .catch(e => console.error(e));
-        console.log('ALBUMS', albumsReturned);
-        console.log('LIST OF ALBUMS', albums);
     }
-    
-
     return (
         <>
      <nav>
@@ -57,7 +53,7 @@ const NavBar = () => {
         <button onClick={searchAlbum}>Search</button>
         </div>
     </nav> 
-    <SearchResults albums={albums} />
+    <SearchResults albums={albums} accessToken={accessToken}/>
     </>
     );
 }
