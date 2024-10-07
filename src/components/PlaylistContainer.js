@@ -21,17 +21,17 @@ const PlaylistContainer = ({albumId, accessToken}) => {
         <div className="mainContent"> 
         <div className="playlistCont">
             <div className="playlistResults">
-               {albumInfo ?  albumInfo.map(song => (
+               {albumInfo &&  albumInfo.map(song => (
                 <div className="eachSong" key={song.uri}>
                     <div className="songLeft">
-                    <h1>{song.track_number}</h1>
-                    <h3>{song.name}</h3>
+                    <h3 className="discFont">{song.track_number}</h3>
+                    {song?.name.length < 20 ? <p>{song.name}</p> : <p>{song.name.slice(0,20)}</p>}
                     </div>
                     <div className="songRight">
                     <button>Add To Playlist</button>
                     </div>
                 </div>
-               )): <h3>Select an album or put in an artist</h3>}
+               ))}
             </div>
         </div>
         <MyPlaylist />
