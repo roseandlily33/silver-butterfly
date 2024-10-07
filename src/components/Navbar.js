@@ -11,7 +11,7 @@ const NavBar = () => {
         
         fetch('https://accounts.spotify.com/api/token', {
             method: 'POST',
-            body: 'grant_type=client_credentials&client_id=' + client_id + '&client_secret=' + client_secret,
+            body: 'grant_type=client_credentials&client_id=' + process.env.REACT_APP_CLIENT_ID + '&client_secret=' + process.env.REACT_APP_CLIENT_SECRET,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
