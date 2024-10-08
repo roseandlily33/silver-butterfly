@@ -1,9 +1,13 @@
-
-const MyPlaylist = () => {
+import { MyPlaylistContainer } from "./MyPlaylist.styles";
+const MyPlaylist = ({playlistAlbums, setPlaylistAlbums}) => {
+    console.log('PLAYLIST ALBUMS', playlistAlbums)
     return ( 
-        <div className="myPlaylist">
+        <MyPlaylistContainer>
             <h3>My Playlist</h3>
-        </div>
+            {playlistAlbums?.map((song) => {
+                return <p>{song.name}</p>
+            })}
+        </MyPlaylistContainer>
      );
 }
  

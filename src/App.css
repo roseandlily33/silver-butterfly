@@ -99,65 +99,6 @@ body{
   height: 100vh;
   background-repeat: no-repeat;
 }
-/* Navbar */
-
-/* Search Results */
-.searchResultsCont{
-  display: flex;
-  flex-direction: row;
-  overflow-y: scroll;
-  gap: 1em;
-  margin: 1em;
-}
-.eachResult{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0.5em;
-  justify-content: space-around;
-  border: var(--border);
-  border-radius: var(--borderRadius);
-  background-color: hsla(34, 47%, 87%, 0.5);
-  color: var(--purple);
-}
-
-/* Main Content */
-.mainContent{
-  display: flex;
-  flex-direction:row;
-  margin: 0.5em;
-  height: 55vh;
-}
-
-/* Playlist Container */
-.playlistCont, .myPlaylist{
-  overflow-x: scroll;
-}
-.playlistResults {
-  overflow-x: scroll;
-}
-.eachSong{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0.5em;
-  padding: 0.5em;
-  border: var(--border);
-  border-radius: var(--borderRadius);
-  background-color: rgba(240, 239, 238, 0.5);
-}
-.songLeft{
-  display: flex;
-  gap: 1em;
-  align-items: center;
-  color: var(--purple);
-}
-/* My Playlist */
-.myPlaylist{
-  width: 100%;
-}
-
 
 /* Main Content */
 @media screen and (max-width: 700px){

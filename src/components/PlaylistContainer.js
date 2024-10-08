@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import MyPlaylist from "./MyPlaylist";
+import { MainContent, PlaylistContainerScroll, EachSongContainer } from "./PlaylistContainer.styles";
+import Tracklist from "./Tracklist";
+
 
 const PlaylistContainer = ({albumId, accessToken}) => {
     const [albumInfo, setAlbumInfo] = useState('');
+    const [playlistAlbums, setPlaylistAlbums] = useState([]);
     useEffect(() => {
         if(albumId && accessToken){
               fetch(`https://api.spotify.com/v1/albums/${albumId}/tracks`, {
@@ -18,24 +22,14 @@ const PlaylistContainer = ({albumId, accessToken}) => {
     }, [albumId, accessToken]);
     
     return ( 
-        <div className="mainContent"> 
-        <div className="playlistCont">
-            <div className="playlistResults">
+        <MainContent> 
+            <PlaylistContainerScroll>
                {albumInfo &&  albumInfo.map(song => (
-                <div className="eachSong" key={song.uri}>
-                    <div className="songLeft">
-                    <h3 className="discFont">{song.track_number}</h3>
-                    {song?.name.length < 20 ? <p>{song.name}</p> : <p>{song.name.slice(0,20)}</p>}
-                    </div>
-                    <div className="songRight">
-                    <button>Add To Playlist</button>
-                    </div>
-                </div>
+                    <Tracklist song={song} setPlaylistAlbums={setPlaylistAlbums}/>
                ))}
-            </div>
-        </div>
-        <MyPlaylist />
-        </div>
+            </PlaylistContainerScroll>
+        <MyPlaylist playlistAlbums={playlistAlbums} setPlaylistAlbums={setPlaylistAlbums}/>
+        </MainContent>
      );
 }
  

@@ -1,6 +1,10 @@
-
+import { TrackContainer } from "./Track.styles";
 const Track = () => {
-    return ( <h3>Track</h3> );
+    return ( 
+        <TrackContainer>
+        <h3>Track</h3>
+        </TrackContainer>
+     );
 }
  
 export default Track;
