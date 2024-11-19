@@ -1,9 +1,11 @@
 import './App.css';
-import NavBar from './components/Navbar';
-
+import NavBar from './components/SearchBar/Navbar';
+import { useState, useCallback } from 'react';
+import Spotify from './components/Utils/spotify';
 import {ThemeProvider} from 'styled-components';
-
-
+import SearchResults from './components/Results/SearchResults';
+import PlaylistContainer from './components/Playlist/PlaylistContainer';
+import MyPlaylist from './components/Playlist/MyPlaylist';
 
 const theme = {
   colors: {
@@ -31,11 +33,35 @@ const theme = {
 }
 
 function App() {
+  const [results, setResults] = useState([]);
+  const [albumInfo, setAlbumInfo] = useState([]);
+  const [playlistName, setPlaylistName] = useState('');
+  const [playlistAlbums, setPlaylistAlbums] = useState([]);
+
+  const searchAlbums = useCallback((album) => {
+    Spotify.search(album).then(result => {
+      setResults(result);
+    })
+  }, [])  
+  const getAlbumInfo = useCallback((albumId) => {
+    Spotify.singleAlbum(albumId).then(result => {
+      setAlbumInfo(result);
+    })
+  } , []);
+
+  const savePlaylist = useCallback((name, trackUris) => { 
+    Spotify.savePlaylist(name, trackUris).then(() => {
+      setPlaylistAlbums([]);
+  })}, []);
+
 
   return (
     <div className="App">
     <ThemeProvider theme={theme}>
-      <NavBar />
+      <NavBar searchAlbums={searchAlbums} />
+      <SearchResults albums={results} getAlbumInfo={getAlbumInfo} />
+      <PlaylistContainer albumInfo={albumInfo} />
+      <MyPlaylist setPlaylistName={setPlaylistName} playlistName={playlistName} playlistAlbums={playlistAlbums} savePlaylist={savePlaylist} />
     </ThemeProvider>
     </div>
   );
