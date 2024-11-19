@@ -1,14 +1,11 @@
 import { EachSongContainer } from "./Tracklist.styles";
 
 const Tracklist = ({song, setPlaylistAlbums}) => {
+    
     const addToPlaylist = (song) => {
-        const songInfo = {
-            uri: song.uri,
-            name: song.name
-        };
-        setPlaylistAlbums((prev) => [...prev, songInfo]);
-        console.log('ADDING SONG', song)
+        setPlaylistAlbums((prev) => [...prev, song]);
     }
+
     return (
         <EachSongContainer key={song.uri}>
                     <div className="songLeft">

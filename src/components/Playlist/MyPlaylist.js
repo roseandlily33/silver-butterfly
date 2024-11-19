@@ -1,11 +1,12 @@
 import { MyPlaylistContainer } from "./MyPlaylist.styles";
 
-const MyPlaylist = ({savePlaylist, playlistAlbums, playlistName, setPlaylistName}) => {
-    console.log('PLAYLIST ALBUMS', playlistAlbums);
-
+// Right Container - displays the users tracks and 
+// Implement a delete function
+const MyPlaylist = ({savePlaylist, status, playlistAlbums, playlistName, setPlaylistName, setPlaylistAlbums}) => {
     return ( 
         <MyPlaylistContainer>
             <input type="text" placeholder="My Playlist" value={playlistName} onChange={(e) => setPlaylistName(e.target.value)}></input>
+            <p>{status}</p>
             {playlistAlbums?.map((song) => {
                 return <p>{song?.name}</p>
             })}

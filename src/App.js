@@ -37,12 +37,14 @@ function App() {
   const [albumInfo, setAlbumInfo] = useState([]);
   const [playlistName, setPlaylistName] = useState('');
   const [playlistAlbums, setPlaylistAlbums] = useState([]);
+  const [status, setStatus] = useState('');
 
   const searchAlbums = useCallback((album) => {
+    if(status.length) setStatus('');
     Spotify.search(album).then(result => {
       setResults(result);
     })
-  }, [])  
+  }, [status])  
   const getAlbumInfo = useCallback((albumId) => {
     Spotify.singleAlbum(albumId).then(result => {
       setAlbumInfo(result);
@@ -50,18 +52,30 @@ function App() {
   } , []);
 
   const savePlaylist = useCallback((name, trackUris) => { 
-    Spotify.savePlaylist(name, trackUris).then(() => {
+    const uris = trackUris.map((t) => t.uri);
+    Spotify.savePlaylist(name, uris).then((data) => {
+      setPlaylistName('My playlist');
       setPlaylistAlbums([]);
+      if(data.ok){
+        setStatus('Playlist has been created')
+      } else{
+        setStatus('Playlist has not been created')
+      }
   })}, []);
-
 
   return (
     <div className="App">
     <ThemeProvider theme={theme}>
+      {/* The search bar */}
       <NavBar searchAlbums={searchAlbums} />
+      {/* The albums at the top */}
       <SearchResults albums={results} getAlbumInfo={getAlbumInfo} />
-      <PlaylistContainer albumInfo={albumInfo} />
-      <MyPlaylist setPlaylistName={setPlaylistName} playlistName={playlistName} playlistAlbums={playlistAlbums} savePlaylist={savePlaylist} />
+      <div style={{display: 'flex'}}>
+      {/* Album songs */}
+      <PlaylistContainer albumInfo={albumInfo} setPlaylistAlbums={setPlaylistAlbums}/>
+      {/* Playlist for user */}
+      <MyPlaylist status={status} setPlaylistName={setPlaylistName} playlistName={playlistName} setPlaylistAlbums={setPlaylistAlbums} playlistAlbums={playlistAlbums} savePlaylist={savePlaylist} />
+      </div>
     </ThemeProvider>
     </div>
   );

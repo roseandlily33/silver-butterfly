@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { MainContent, PlaylistContainerScroll} from "./PlaylistContainer.styles";
 import Tracklist from "../Tracklist/Tracklist";
 
-
-const PlaylistContainer = ({albumInfo}) => {
-    const [playlistAlbums, setPlaylistAlbums] = useState([]);
+// Left Container - Displays the songs from one album
+const PlaylistContainer = ({albumInfo, setPlaylistAlbums}) => {
    
     return ( 
         <MainContent> 

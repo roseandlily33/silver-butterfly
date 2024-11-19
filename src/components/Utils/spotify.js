@@ -23,7 +23,6 @@ const Spotify = {
     }
   },
   async search(album) {
-    //console.log('Searching for', album)
     const accessToken = Spotify.getAccessToken();
     // First we get the artists id
     let artistId = await fetch('https://api.spotify.com/v1/search?q=' + album + '&type=artist', {
@@ -36,7 +35,6 @@ const Spotify = {
     .then(data => {
     return data.artists.items[0].id;
     }).catch(e => console.error(e));
-    //console.log('ARTIST ID FOUND', artistId);
     // Then we get the albums for that artist
     return await fetch('https://api.spotify.com/v1/artists/' + artistId +'/albums', {
         method: 'GET',
@@ -46,7 +44,6 @@ const Spotify = {
     })
     .then(res => res.json())
     .then(data => {
-      //  console.log('ALBUM DATA', data.items); 
         return data.items;
     })
     .catch(e => console.error(e));
@@ -61,41 +58,43 @@ const Spotify = {
         }
       });
       const data = await res.json();
-      //console.log('SINGLE ALBUM', data);
       return data.items;
     } catch (e) {
       return console.error(e);
     }
   },
 
-  savePlaylist(name, trackUris) {
-    console.log('Saving playlist')
+  async savePlaylist(name, trackUris) {
     if (!name || !trackUris.length) {
       return;
     }
-
     const accessToken = Spotify.getAccessToken();
-    const headers = { Authorization: `Bearer ${accessToken}` };
-    let userId;
-
-    return fetch('https://api.spotify.com/v1/me', {headers: headers}
-    ).then(res => res.json()
-    ).then(jsonResponse => {
-      userId = jsonResponse.id;
-      return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
-        headers: headers,
+    let userId = await fetch('https://api.spotify.com/v1/me', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
+    .then(res => res.json())
+    .then(data => { return data.id})
+    .catch(err => console.error(err));
+  let playlistId = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
         method: 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        },
         body: JSON.stringify({name: name})
-      }).then(res => res.json()
-      ).then(jsonResponse => {
-        const playlistId = jsonResponse.id;
-        return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
-          headers: headers,
+      })
+      .then(res => res.json())
+      .then(data => {return data.id})
+      .catch(err => console.error(err));
+     let final = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
           method: 'POST',
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          },
           body: JSON.stringify({uris: trackUris})
         });
-      });
-    });
+      return final;
   }
 };
 

@@ -1,8 +1,18 @@
 import styled from 'styled-components';
 
 export const MyPlaylistContainer = styled.section`
-    border: 1px solid blue;
-    width: 30%;
+    border: 5px solid blue;
+    width: 50%;
     height: auto;
-
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    input{
+        border: none;
+        border-bottom: 2px solid var(--pink);
+        padding: 1rem;
+        background-color: var(--lightCream);
+        border-radius: 10px;
+    }
 `;

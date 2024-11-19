@@ -5,14 +5,12 @@ export const MainContent = styled.main`
         flex-direction:row;
         margin: 0.5em;
         height: 55vh;
-        border: 1px solid black;
-        width: 100%;
+        width: 40%;
+        border: 5px solid black;
 `;
 
 export const PlaylistContainerScroll = styled.section`
     overflow-x: scroll;
-    border: 1px solid grey;
-
 `;
 
 
