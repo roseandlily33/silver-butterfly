@@ -8,7 +8,7 @@ Using the Spotify API, you can create your own spotify playlist by looking up an
 https://silver-butterfly.onrender.com
 
 ## Screenshots:
-![Main Screen](image/screenshot.png)
+![Main Screen](../src/images/screenshot.png)
 
 ## Tech Used:
 - Spotify API
