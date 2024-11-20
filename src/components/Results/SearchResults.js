@@ -1,6 +1,6 @@
 import { EachResult, SearchResultsContainer } from "./SearchResults.styles";
 
-const SearchResults = ({albums, getAlbumInfo}) => {
+const SearchResults = ({albums, getAlbumInfo, setAlbumName}) => {
     
     return ( 
         <>
@@ -9,7 +9,10 @@ const SearchResults = ({albums, getAlbumInfo}) => {
         <EachResult key={album?.id}>
         <img src={album?.images[2].url} alt={album?.url}/>
         <p>{album?.name}</p>
-        <button onClick={() => {getAlbumInfo(album?.id)}}>See Tracks</button>
+        <button onClick={() => {
+            getAlbumInfo(album?.id)
+            setAlbumName(album?.name)
+        }}>See Tracks</button>
         </EachResult>
         )
         ): <p>No albums to display</p>}

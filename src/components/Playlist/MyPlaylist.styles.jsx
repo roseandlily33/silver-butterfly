@@ -15,4 +15,9 @@ export const MyPlaylistContainer = styled.section`
         background-color: var(--lightCream);
         border-radius: 10px;
     }
+    @media screen and (max-width: 750px){
+        border: 1px solid orange;
+        width: 95%;
+        height: 30vh;
+    }
 `;

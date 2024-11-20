@@ -37,6 +37,7 @@ function App() {
   const [albumInfo, setAlbumInfo] = useState([]);
   const [playlistName, setPlaylistName] = useState('');
   const [playlistAlbums, setPlaylistAlbums] = useState([]);
+  const [albumName, setAlbumName] = useState('');
   const [status, setStatus] = useState('');
 
   const searchAlbums = useCallback((album) => {
@@ -69,10 +70,10 @@ function App() {
       {/* The search bar */}
       <NavBar searchAlbums={searchAlbums} />
       {/* The albums at the top */}
-      <SearchResults albums={results} getAlbumInfo={getAlbumInfo} />
-      <div style={{display: 'flex'}}>
+      <SearchResults setAlbumName={setAlbumName} albums={results} getAlbumInfo={getAlbumInfo} />
+      <div className='middle'>
       {/* Album songs */}
-      <PlaylistContainer albumInfo={albumInfo} setPlaylistAlbums={setPlaylistAlbums}/>
+      <PlaylistContainer albumName={albumName} albumInfo={albumInfo} setPlaylistAlbums={setPlaylistAlbums}/>
       {/* Playlist for user */}
       <MyPlaylist status={status} setPlaylistName={setPlaylistName} playlistName={playlistName} setPlaylistAlbums={setPlaylistAlbums} playlistAlbums={playlistAlbums} savePlaylist={savePlaylist} />
       </div>

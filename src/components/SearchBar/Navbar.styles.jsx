@@ -14,5 +14,8 @@ export const NavContainer = styled.header`
         border-radius: var(--borderRadius);
         margin-right: 1rem;
     }
+    @media screen and (max-width: 750px){
+        flex-direction: column;
+    }
 
 `;

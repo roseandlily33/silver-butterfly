@@ -15,5 +15,6 @@ export const EachSongContainer = styled.div`
     align-items: center;
     color: ${({theme}) => theme.colors.purple};
   }
+   
 
 `;
