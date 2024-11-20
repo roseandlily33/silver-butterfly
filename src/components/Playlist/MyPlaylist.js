@@ -1,5 +1,5 @@
 import { MyPlaylistContainer } from "./MyPlaylist.styles";
-
+import { PlaylistContainerScroll } from "./PlaylistContainer.styles";
 // Right Container - displays the users tracks and 
 // Implement a delete function
 const MyPlaylist = ({savePlaylist, status, playlistAlbums, playlistName, setPlaylistName, setPlaylistAlbums}) => {
@@ -13,15 +13,17 @@ const MyPlaylist = ({savePlaylist, status, playlistAlbums, playlistName, setPlay
         <MyPlaylistContainer>
             <input type="text" placeholder="My Playlist" value={playlistName} onChange={(e) => setPlaylistName(e.target.value)}></input>
             <p>{status}</p>
+            <PlaylistContainerScroll>
             {playlistAlbums?.map((song) => {
-                return <div>
-                    <h3>{song.name}</h3>
+                return <div className="playlistSong">
+                    <p>{song.name}</p>
                     <button onClick={(e) => {
                         e.preventDefault();
                         deleteSong(song);
                     }}>delete</button>
                 </div>
             })}
+            </PlaylistContainerScroll>
             <button onClick={(e) => {
                 e.preventDefault();
                 savePlaylist(playlistName, playlistAlbums);

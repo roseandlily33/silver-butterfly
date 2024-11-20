@@ -101,7 +101,6 @@ body{
 }
 .middle{
   display: flex;
-  border: 5px solid purple;
 }
 
 /* Main Content */
