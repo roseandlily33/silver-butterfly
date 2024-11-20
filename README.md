@@ -4,6 +4,9 @@
 Front End Project
 Using the Spotify API, you can create your own spotify playlist by looking up an artist, seeing all their albums and selecting the songs that you would like to have on your playlist using CRUD operations. Once the playlist is completed you are able to save your playlist to Spotify.
 
+## Deployed Link:
+https://silver-butterfly.onrender.com
+
 ## Screenshots:
 ![Main Screen](image/screenshot.png)
 
