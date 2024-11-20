@@ -13,7 +13,7 @@ const MyPlaylist = ({savePlaylist, status, playlistAlbums, playlistName, setPlay
         <MyPlaylistContainer>
             <input type="text" placeholder="My Playlist" value={playlistName} onChange={(e) => setPlaylistName(e.target.value)}></input>
             <p>{status}</p>
-            <PlaylistContainerScroll>
+            <PlaylistContainerScroll style={{borderRadius: '5px', backgroundColor: 'rgba(246, 245, 242, 0.5)', padding: '1rem'}}>
             {playlistAlbums?.map((song) => {
                 return <div className="playlistSong">
                     <p>{song.name}</p>

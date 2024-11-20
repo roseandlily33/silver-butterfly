@@ -46,6 +46,7 @@ function App() {
       setResults(result);
     })
   }, [status])  
+
   const getAlbumInfo = useCallback((albumId) => {
     Spotify.singleAlbum(albumId).then(result => {
       setAlbumInfo(result);
@@ -73,7 +74,7 @@ function App() {
       <SearchResults setAlbumName={setAlbumName} albums={results} getAlbumInfo={getAlbumInfo} />
       <div className='middle'>
       {/* Album songs */}
-      <PlaylistContainer albumName={albumName} albumInfo={albumInfo} setPlaylistAlbums={setPlaylistAlbums}/>
+      <PlaylistContainer albumName={albumName} albumInfo={albumInfo} setPlaylistAlbums={setPlaylistAlbums} playlistAlbums={playlistAlbums}/>
       {/* Playlist for user */}
       <MyPlaylist status={status} setPlaylistName={setPlaylistName} playlistName={playlistName} setPlaylistAlbums={setPlaylistAlbums} playlistAlbums={playlistAlbums} savePlaylist={savePlaylist} />
       </div>

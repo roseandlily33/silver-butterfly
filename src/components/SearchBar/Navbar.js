@@ -9,7 +9,7 @@ const NavBar = ({searchAlbums}) => {
      <NavContainer>
         <h1>Jammin</h1>
         <div>
-        <input placeholder="Search for an artist" value={searchInput} onChange={(e) => setSearchInput(e.target.value)}></input>
+        <input placeholder="Search for an artist" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
         <button onClick={(e)=> {
             e.preventDefault();
             searchAlbums(searchInput);

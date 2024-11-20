@@ -21,7 +21,7 @@ export const MainContent = styled.main`
 
 export const PlaylistContainerScroll = styled.section`
     overflow-x: scroll;
-    max-height: 40vh;
+    max-height: 50vh;
 `;
 
 

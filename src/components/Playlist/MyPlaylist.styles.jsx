@@ -7,6 +7,7 @@ export const MyPlaylistContainer = styled.section`
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
+    height: 55vh;
     border-left: 5px solid ${({theme}) => theme.colors.darkCream};
     input{
         border: none;
@@ -26,7 +27,7 @@ export const MyPlaylistContainer = styled.section`
   
     @media screen and (max-width: 750px){
         width: 95%;
-        height: 30vh;
+        height: 40vh;
         border-left: none;
     }
 `;

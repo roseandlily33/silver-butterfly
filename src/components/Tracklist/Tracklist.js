@@ -1,9 +1,15 @@
 import { EachSongContainer } from "./Tracklist.styles";
 
-const Tracklist = ({song, setPlaylistAlbums}) => {
+const Tracklist = ({song, setPlaylistAlbums, playlistAlbums}) => {
     
     const addToPlaylist = (song) => {
-        setPlaylistAlbums((prev) => [...prev, song]);
+        let check = playlistAlbums.some((s) => s.uri === song.uri);
+        if(!check){
+            setPlaylistAlbums((prev) => [...prev, song]);
+        } else {
+            // Alert for now may change to something else later
+            alert('Song already added to playlist')
+        }
     }
 
     return (
