@@ -25,4 +25,6 @@ https://silver-butterfly.onrender.com
 ## Status Of Project:
 I may touch up some of the CSS 
 
-
+## Contact
+Email: vrose834@gmail.com
+Github: roseandlily33
